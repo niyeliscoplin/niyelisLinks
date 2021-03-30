@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 
 const TableHeader = () => { 
@@ -13,26 +14,30 @@ const TableHeader = () => {
     );
 }
 
-const TableBody = props => { 
-    // boilerplate table body functional component 
-    // we use Array.map to create table rows from LinkData passed via props
-    const rows = props.linkData.map((row, index) => {
-        return (
-            <tr key={index}>
-                <td>{row.name}</td>
+const TableBody = props => {
+   const rows = props.linkData.map((row, index) => {
+       return (
+           <tr>
+<td>{row.name}</td>
                 <td><a href={row.URL}>{row.URL}</a></td>
                 <td><button onClick={() => props.removeLink(index)}>Delete</button></td>
-            </tr>
-        );
-    });
+           </tr>
+       );
+   });
 
-    return <tbody>{rows}</tbody>;
+   return <tbody> {rows} </tbody>;
 }
+render();
+    function Table(props) {
+        //    const { linkData, removeLink } = props;
+        {
+            return (
+                <div>
+                    {TableHeader()}
+                    {TableBody(props)}
+                </div>
+            );
+        }
 
-const Table = (props) => {
-//    const { linkData, removeLink } = props;
-    {/*TODO - return <table> component, TableHeader and TableBody  */}
-
-}
-
+    }
 export default Table;
